@@ -3,7 +3,7 @@ package org.example;
 import org.example.functionality.*;
 
 /**
- * Hello world!
+ * Welcome to Cryptographer!
  */
 public class App {
     
