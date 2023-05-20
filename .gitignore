@@ -1,0 +1,25 @@
+# Project exclude paths
+/target/
+
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+!.idea/
+.idea/*
+!.idea/runConfigurations
+*.iws
+*.iml
+
+# Maven
+log/
+target/
+
+# IR
+ajcore.*
+
+# testng-failed.xml
+testng-failed.xml
