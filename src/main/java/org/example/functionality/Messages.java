@@ -3,18 +3,18 @@ package org.example.functionality;
 public class Messages {
 
     private final String WELCOME_MESSAGE = "Welcome to Cryptographer";
-    private String ENCRYPT_PROGRAM = "[e] encrypt mode";
-    private String DECRYPT_PROGRAM = "[d] decrypt mode";
-    private String BRUTE_FORCE_PROGRAM = "[b] brute force mode";
+    private final String ENCRYPT_PROGRAM = "[e] encrypt mode";
+    private final String DECRYPT_PROGRAM = "[d] decrypt mode";
+    private final String BRUTE_FORCE_PROGRAM = "[b] brute force mode";
 
-    private String AVAILABLE_OPTIONS = ENCRYPT_PROGRAM + "\t" + DECRYPT_PROGRAM + "\t" + BRUTE_FORCE_PROGRAM;
+    private final String AVAILABLE_OPTIONS = ENCRYPT_PROGRAM + "\t" + DECRYPT_PROGRAM + "\t" + BRUTE_FORCE_PROGRAM;
 
-    private String CHOOSE_OPTION_MESSAGE = "Choose program mode:";
+    private final String CHOOSE_OPTION_MESSAGE = "Choose program mode:";
 
-    private String FILE_PATH = "Input file path...";
-    private String ENCRYPTION_KEY = "Input encryption key...";
-    private String FILE_NAME = "Input file name...";
-    private String TEXT_SAVED_DESC = "Text saved successfully.";
+    private final String FILE_PATH = "Input file path...";
+    private final String ENCRYPTION_KEY = "Input encryption key...";
+    private final String FILE_NAME = "Input file name...";
+    private final String TEXT_SAVED_DESC = "Text saved successfully.";
 
     public void printMessage(String string) {
         System.out.println(string);
