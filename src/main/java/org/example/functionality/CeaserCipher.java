@@ -1,9 +1,9 @@
 package org.example.functionality;
 
-public class CeaserCipher extends Functionality {
+public class CeaserCipher extends CeaserFunctionality {
 
     class basic {
-        String allChar = new Functionality().getAlphabetUpperCase() + new Functionality().getSpecialCharacters();
+        String allChar = new CeaserFunctionality().getAlphabetUpperCase() + new CeaserFunctionality().getSpecialCharacters();
 
         int indexOfChar(char c) {
             for (int i = 0; i < allChar.length(); i++) {

@@ -6,7 +6,7 @@ import org.example.io.Output;
 
 import java.util.Arrays;
 
-public class Functionality extends Input implements Cipher{
+public class CeaserFunctionality extends Input implements Cipher{
 
     private final String ALPHABET_UPPER_CASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private final String ALPHABET_LOWER_CASE = "abcdefghijklmnopqrstuvwxyz";
@@ -15,7 +15,6 @@ public class Functionality extends Input implements Cipher{
     private char[] input;
     private int key;
 
-    @Override
     public void getScenario() {
         int attempt = 1;
         while (attempt <= 4) {
@@ -112,9 +111,9 @@ public class Functionality extends Input implements Cipher{
 
     public String bruteForceDecrypt(String encryptedString) {
         // Ініціалізувати можливі символи, які можуть бути в розшифрованому рядку
-        String possibleCharacters = new Functionality().ALPHABET_UPPER_CASE +
-                new Functionality().ALPHABET_UPPER_CASE +
-                new Functionality().SPECIAL_CHARACTERS;
+        String possibleCharacters = new CeaserFunctionality().ALPHABET_UPPER_CASE +
+                new CeaserFunctionality().ALPHABET_UPPER_CASE +
+                new CeaserFunctionality().SPECIAL_CHARACTERS;
 
         // Перебрати всі можливі комбінації символів
         for (int keyLength = 1; keyLength <= possibleCharacters.length(); keyLength++) {
