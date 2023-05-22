@@ -3,6 +3,7 @@ package org.example.functionality;
 import org.example.exceptions.IncorrectProgramModeError;
 import org.example.io.Input;
 import org.example.io.Output;
+
 import java.util.Arrays;
 
 public class EncryptionDecryptionFunctionality extends Input {
@@ -16,7 +17,7 @@ public class EncryptionDecryptionFunctionality extends Input {
 
     public void chooseScenario() {
         int attempt = 1;
-        while (attempt < 4) {
+        while (attempt <= 4) {
             try {
                 setProgramMode(sc.nextLine());
             } catch (IncorrectProgramModeError ex) {
@@ -26,6 +27,7 @@ public class EncryptionDecryptionFunctionality extends Input {
             if (Arrays.stream(Modes.values()).anyMatch(mode -> mode.getProgramModeValue().equals(getProgramMode()))) {
                 break;
             }
+            if (attempt == 4) throw new IncorrectProgramModeError("Incorrect input value");
         }
 
         if (getProgramMode().equals(Modes.ENCRYPT_MODE.getProgramModeValue())) {
@@ -47,6 +49,8 @@ public class EncryptionDecryptionFunctionality extends Input {
             setFileText(readFile(getFilePath()));
             setFileText(bruteForceDecrypt(getFilePath()));
             new Output().saveFile(getFilePath(), getFileText());
+        } else if (getProgramMode().equals(Modes.CLOSE_PROGRAM_MODE.getProgramModeValue())) {
+            System.out.println(new Messages().getCloseProgramMessage());
         }
     }
 
