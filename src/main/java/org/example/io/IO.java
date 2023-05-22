@@ -1,7 +1,9 @@
 package org.example.io;
 
+import org.example.exceptions.IncorrectProgramModeError;
 import org.example.functionality.Messages;
-
+import org.example.functionality.Modes;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class IO {
@@ -19,12 +21,12 @@ public class IO {
         return this.key;
     }
 
-    public void setEncryptionKey(int key){
+    public void setEncryptionKey(int key) {
         System.out.println(new Messages().getEncryptionKey());
         this.key = key;
     }
 
-    public void setEncryptionKey(){
+    public void setEncryptionKey() {
         System.out.println(new Messages().getEncryptionKey());
         this.key = sc.nextInt();
     }
@@ -34,10 +36,11 @@ public class IO {
     }
 
     public void setProgramMode(String programMode) {
-        this.programMode = sc.nextLine();
-    }
-    public void setProgramMode() {
-        this.programMode = sc.nextLine();
+        if (Arrays.stream(Modes.values()).anyMatch(mode -> mode.getProgramModeValue().equals(programMode))) {
+            this.programMode = programMode;
+        } else {
+            throw new IncorrectProgramModeError("Incorrect mode value");
+        }
     }
 
     public String getFilePath() {
@@ -62,17 +65,17 @@ public class IO {
         this.fileText = fileText;
     }
 
-    public void setFileName(String fileName){
+    public void setFileName(String fileName) {
         System.out.println(new Messages().getFileName() + "saved");
         this.getFileName = fileName;
     }
 
-    public void setFileName(){
+    public void setFileName() {
         System.out.println(new Messages().getFileName() + "saved");
         this.getFileName = sc.nextLine();
     }
 
-    public String getFileName(){
+    public String getFileName() {
         return this.getFileName;
     }
 

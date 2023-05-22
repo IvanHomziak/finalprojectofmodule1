@@ -3,7 +3,7 @@ package org.example.functionality;
 public class CeaserCipher extends EncryptionDecryptionFunctionality {
 
     class basic {
-        String allChar = new EncryptionDecryptionFunctionality().getALPHABET_UPPER_CASE() + new EncryptionDecryptionFunctionality().getSPECIAL_CHARACTERS();
+        String allChar = new EncryptionDecryptionFunctionality().getAlphabetUpperCase() + new EncryptionDecryptionFunctionality().getSpecialCharacters();
 
         int indexOfChar(char c) {
             for (int i = 0; i < allChar.length(); i++) {

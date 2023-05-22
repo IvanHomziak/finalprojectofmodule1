@@ -1,28 +1,33 @@
 package org.example.functionality;
 
+import org.example.exceptions.IncorrectProgramModeError;
 import org.example.io.Input;
 import org.example.io.Output;
+import java.util.Arrays;
 
 public class EncryptionDecryptionFunctionality extends Input {
 
-    public String getALPHABET_UPPER_CASE() {
-        return ALPHABET_UPPER_CASE;
-    }
-
     private final String ALPHABET_UPPER_CASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private final String ALPHABET_LOWER_CASE = "abcdefghijklmnopqrstuvwxyz";
-
-    public String getSPECIAL_CHARACTERS() {
-        return SPECIAL_CHARACTERS;
-    }
-
     private final String SPECIAL_CHARACTERS = ".,”:-!? ";
     private String ALPHABET = null;
     private char[] input;
     private int key;
 
     public void chooseScenario() {
-        setProgramMode();
+        int attempt = 1;
+        while (attempt < 4) {
+            try {
+                setProgramMode(sc.nextLine());
+            } catch (IncorrectProgramModeError ex) {
+                System.out.println(new Messages().getIncorrectModeMessage() + new Messages().getAvailableModes());
+                attempt++;
+            }
+            if (Arrays.stream(Modes.values()).anyMatch(mode -> mode.getProgramModeValue().equals(getProgramMode()))) {
+                break;
+            }
+        }
+
         if (getProgramMode().equals(Modes.ENCRYPT_MODE.getProgramModeValue())) {
             setFilePath();
             setEncryptionKey();
@@ -144,5 +149,13 @@ public class EncryptionDecryptionFunctionality extends Input {
             // Видалити останній доданий символ перед переходом до наступного
             decryptedString.setLength(decryptedString.length() - 1);
         }
+    }
+
+    public String getAlphabetUpperCase() {
+        return ALPHABET_UPPER_CASE;
+    }
+
+    public String getSpecialCharacters() {
+        return SPECIAL_CHARACTERS;
     }
 }
