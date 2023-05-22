@@ -71,7 +71,7 @@ public class EncryptionDecryptionFunctionality extends Input {
         for (int i = 0; i < cipherText.length(); i++) {
             isCharacterUpperOrLowerCase(cipherText.charAt(i));
             int charPosition = ALPHABET.indexOf(cipherText.charAt(i));
-            int keyVal = charPosition - shiftKey;
+            int keyVal = (charPosition - shiftKey) % ALPHABET.length();
             if (keyVal < 0) {
                 keyVal = ALPHABET.length() + keyVal;
             }
