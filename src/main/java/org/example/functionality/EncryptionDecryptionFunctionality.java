@@ -24,32 +24,27 @@ public class EncryptionDecryptionFunctionality extends Input {
                 System.out.println(new Messages().getIncorrectModeMessage() + new Messages().getAvailableModes());
                 attempt++;
             }
-            if (Arrays.stream(Modes.values()).anyMatch(mode -> mode.getProgramModeValue().equals(getProgramMode()))) {
+            if (Arrays.stream(Modes.values()).anyMatch(mode -> mode.getModeValue().equals(getProgramMode()))) {
                 break;
             }
             if (attempt == 4) throw new IncorrectProgramModeError("Incorrect input value");
         }
 
-        if (getProgramMode().equals(Modes.ENCRYPT_MODE.getProgramModeValue())) {
+        if (getProgramMode().equals(Modes.ENCRYPT_MODE.getModeValue())) {
             setFilePath();
             setEncryptionKey();
-            setFileText(readFile(getFilePath()));
-            setNewFileText(encrypt(getFileText(), getKey()));
-            setFileName();
-            new Output().saveFile(getFilePath(), getNewFileText());
-        } else if (getProgramMode().equals(Modes.DECRYPT_MODE.getProgramModeValue())) {
+            setFileText(encrypt(readFile(getFilePath()), getKey()));
+            new Output().saveFile(getFilePath(), getFileText(), getProgramMode());
+        } else if (getProgramMode().equals(Modes.DECRYPT_MODE.getModeValue())) {
             setFilePath();
             setEncryptionKey();
-            setFileText(readFile(getFilePath()));
-            setNewFileText(decrypt(getFileText(), getKey()));
-            setFileName();
-            new Output().saveFile(getFilePath(), getNewFileText());
-        } else if (getProgramMode().equals(Modes.BRUTE_FORCE_MODE.getProgramModeValue())) {
+            setFileText(decrypt(readFile(getFilePath()), getKey()));
+            new Output().saveFile(getFilePath(), getFileText(), getProgramMode());
+        } else if (getProgramMode().equals(Modes.BRUTE_FORCE_MODE.getModeValue())) {
             setFilePath();
-            setFileText(readFile(getFilePath()));
             setFileText(bruteForceDecrypt(getFilePath()));
-            new Output().saveFile(getFilePath(), getFileText());
-        } else if (getProgramMode().equals(Modes.CLOSE_PROGRAM_MODE.getProgramModeValue())) {
+            new Output().saveFile(getFilePath(), getFileText(), getProgramMode());
+        } else if (getProgramMode().equals(Modes.CLOSE_PROGRAM_MODE.getModeValue())) {
             System.out.println(new Messages().getCloseProgramMessage());
         }
     }

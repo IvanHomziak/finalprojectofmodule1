@@ -3,6 +3,7 @@ package org.example.io;
 import org.example.exceptions.IncorrectProgramModeError;
 import org.example.functionality.Messages;
 import org.example.functionality.Modes;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -32,11 +33,11 @@ public class IO {
     }
 
     public String getProgramMode() {
-        return programMode;
+        return this.programMode;
     }
 
     public void setProgramMode(String programMode) {
-        if (Arrays.stream(Modes.values()).anyMatch(mode -> mode.getProgramModeValue().equals(programMode))) {
+        if (Arrays.stream(Modes.values()).anyMatch(mode -> mode.getModeValue().equals(programMode))) {
             this.programMode = programMode;
         } else {
             throw new IncorrectProgramModeError("Incorrect mode value");

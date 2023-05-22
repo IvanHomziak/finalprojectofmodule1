@@ -12,7 +12,7 @@ public enum Modes {
         this.mode = mode;
     }
 
-    public String getProgramModeValue() {
+    public String getModeValue() {
         return this.mode;
     }
 }
