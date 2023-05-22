@@ -15,6 +15,6 @@ public class App {
         new Greetings();
         new Messages().printMessage(new Messages().getChooseOptionMessage());
         new Messages().printMessage(new Messages().getAvailableModes());
-        new EncryptionDecryptionFunctionality().chooseScenario();
+        new Functionality().getScenario();
     }
 }

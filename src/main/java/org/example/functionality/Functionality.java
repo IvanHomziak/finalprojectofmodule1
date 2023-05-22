@@ -6,7 +6,7 @@ import org.example.io.Output;
 
 import java.util.Arrays;
 
-public class EncryptionDecryptionFunctionality extends Input {
+public class Functionality extends Input implements Cipher{
 
     private final String ALPHABET_UPPER_CASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private final String ALPHABET_LOWER_CASE = "abcdefghijklmnopqrstuvwxyz";
@@ -15,7 +15,8 @@ public class EncryptionDecryptionFunctionality extends Input {
     private char[] input;
     private int key;
 
-    public void chooseScenario() {
+    @Override
+    public void getScenario() {
         int attempt = 1;
         while (attempt <= 4) {
             try {
@@ -84,8 +85,8 @@ public class EncryptionDecryptionFunctionality extends Input {
         }
     }
 
-    public String bruteforce(String string) {
-        input = string.toCharArray();
+    public String bruteforce(String text) {
+        input = text.toCharArray();
         for (key = 1; key < 27; key++) {
             for (int i = 0; i < input.length; i++) {
                 if (input[i] == ' ')
@@ -104,16 +105,16 @@ public class EncryptionDecryptionFunctionality extends Input {
                     }
                 }
             }
-            input = string.toCharArray();
+            input = text.toCharArray();
         }
         return new String(input);
     }
 
     public String bruteForceDecrypt(String encryptedString) {
         // Ініціалізувати можливі символи, які можуть бути в розшифрованому рядку
-        String possibleCharacters = new EncryptionDecryptionFunctionality().ALPHABET_UPPER_CASE +
-                new EncryptionDecryptionFunctionality().ALPHABET_UPPER_CASE +
-                new EncryptionDecryptionFunctionality().SPECIAL_CHARACTERS;
+        String possibleCharacters = new Functionality().ALPHABET_UPPER_CASE +
+                new Functionality().ALPHABET_UPPER_CASE +
+                new Functionality().SPECIAL_CHARACTERS;
 
         // Перебрати всі можливі комбінації символів
         for (int keyLength = 1; keyLength <= possibleCharacters.length(); keyLength++) {
